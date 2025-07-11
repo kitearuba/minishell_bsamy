@@ -1,9 +1,16 @@
 
-#include "../../include/minishell.h"
+#include "../../include/builtin.h"
 
-int ft_pwd(char **argv, t_bash *bash)
+int ft_pwd(void)
 {
-    (void)argv;
-    (void)bash;
-    return (printf("Called: ft_pwd\n"));
+    char buffer[1024];
+    char *current_working_dir;
+
+    current_working_dir = getcwd(buffer, sizeof(buffer));
+    if (current_working_dir == NULL)
+    {
+        perror("minishell: pwd");
+        return (1);
+    }
+    return (0);
 }
