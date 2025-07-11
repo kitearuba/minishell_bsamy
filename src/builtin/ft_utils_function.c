@@ -50,22 +50,22 @@ char **convert_env_list_to_array(t_list *env_list)
 
     count = 0;
     current = env_list;
-    while (current) // Compte le nombre d'éléments dans la liste
+    while (current)
     {
         count++;
         current = current->next;
     }
-    env_array = malloc(sizeof(char *) * (count + 1)); // +1 pour le NULL terminateur
+    env_array = malloc(sizeof(char *) * (count + 1));
     if (!env_array)
         return (NULL);
     current = env_list;
-    count = 0; // Réutiliser count pour l'indexation
+    count = 0;
     while (current)
     {
-        env_array[count] = (char *)current->content; // Copie le pointeur vers la chaîne
+        env_array[count] = (char *)current->content;
         count++;
         current = current->next;
     }
-    env_array[count] = NULL; // Termine le tableau par NULL
+    env_array[count] = NULL;
     return (env_array);
 }

@@ -20,13 +20,11 @@ char *get_var_name(const char *env_line)
 
     equal_pos = ft_strchr(env_line, '=');
     if (!equal_pos)
-        return (ft_strdup(env_line)); // Si pas de '=', toute la ligne est le nom
-    
+        return (ft_strdup(env_line));
     len = equal_pos - env_line;
     name = malloc(len + 1);
     if (!name)
         return (NULL);
-    
     ft_strlcpy(name, env_line, len + 1);
     return (name);
 }
